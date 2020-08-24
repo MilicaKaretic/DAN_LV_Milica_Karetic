@@ -133,7 +133,7 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
             if (OrderPizza.Size == "small")
                 totalAmount = 100;
-            else if (OrderPizza.Size == "middle")
+            else if (OrderPizza.Size == "medium")
                 totalAmount = 150;
             else if (OrderPizza.Size == "big")
                 totalAmount = 180;

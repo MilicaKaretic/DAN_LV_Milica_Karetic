@@ -139,9 +139,9 @@
             <RadioButton  GroupName="Size"
                           Width="65"
                           Name="cbmiddle"
-                          Content="middle"
+                          Content="medium"
                           IsChecked="{Binding OrderPizza.Size, 
-                Converter={StaticResource ResourceKey=radioButtonConverter}, ConverterParameter=middle, 
+                Converter={StaticResource ResourceKey=radioButtonConverter}, ConverterParameter=medium, 
                  UpdateSourceTrigger=PropertyChanged}"></RadioButton>
             <RadioButton  GroupName="Size"
                           Width="65"
