@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace DAN_LV_Milica_Karetic.Model
 {
+    /// <summary>
+    /// Pizza order class
+    /// </summary>
     class OrderPizza
     {
         public int OrderID { get; set; }

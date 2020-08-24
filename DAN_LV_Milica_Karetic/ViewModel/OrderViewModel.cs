@@ -3,11 +3,6 @@ using DAN_LV_Milica_Karetic.Model;
 using DAN_LV_Milica_Karetic.View;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
@@ -29,10 +24,14 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
         #endregion
 
+
         #region Properties
 
         private OrderPizza orderPizza;
 
+        /// <summary>
+        /// order pizza property
+        /// </summary>
         public OrderPizza OrderPizza
         {
             get { return orderPizza; }
@@ -43,7 +42,7 @@ namespace DAN_LV_Milica_Karetic.ViewModel
             }
         }
         /// <summary>
-        /// Login info label
+        /// calculation info label
         /// </summary>
         private string labelInfo;
         public string LabelInfo
@@ -87,6 +86,9 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
         #region Commands
 
+            /// <summary>
+            /// save command
+            /// </summary>
         private ICommand save;
         public ICommand Save
         {
@@ -119,7 +121,9 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
         #region Functions
 
-       
+       /// <summary>
+       /// save execute
+       /// </summary>
         private void SaveExecute()
         {
 
@@ -167,6 +171,9 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
         }
 
+        /// <summary>
+        /// disable buttons after culculate amount
+        /// </summary>
         private void DisableButtons()
         {
             orderView.cbBig.IsEnabled = false;
@@ -184,6 +191,10 @@ namespace DAN_LV_Milica_Karetic.ViewModel
             orderView.cSesame.IsEnabled = false;
         }
 
+        /// <summary>
+        /// can save execute
+        /// </summary>
+        /// <returns></returns>
         private bool CanSaveExecute()
         {
 
@@ -191,6 +202,9 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
         }
 
+        /// <summary>
+        /// send sms excute
+        /// </summary>
         private void SendSMSExecute()
         {
 
@@ -210,7 +224,10 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
         }
 
-
+        /// <summary>
+        /// can send message after amount is calculated
+        /// </summary>
+        /// <returns></returns>
         private bool CanSendSMSExecute()
         {
             if (LabelInfo != null)
