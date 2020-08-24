@@ -1,0 +1,221 @@
+﻿<Window x:Class="DAN_LV_Milica_Karetic.View.Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DAN_LV_Milica_Karetic.View"
+        xmlns:c="clr-namespace:DAN_LV_Milica_Karetic.Converter"
+        xmlns:vm="clr-namespace:DAN_LV_Milica_Karetic.Model"
+        mc:Ignorable="d"
+        Title="Order"
+        Height="450"
+        Width="800">
+    <Window.Resources>
+        <c:RadioButtonConverter x:Key="radioButtonConverter" />
+        <vm:OrderPizza x:Key="data" />
+        <!--The tool tip for the TextBox to display the validation error message.-->
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="6" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1"
+               Grid.Row="1"
+               Name="lblSize"
+               Content="Size:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="3"
+               Name="lblSalami"
+               Content="Salami:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="5"
+               Name="lblHam"
+               Content="Ham:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="7"
+               Name="lblKulen"
+               Content="Kulen:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="9"
+               Name="lblKetchup"
+               Content="Ketchup:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="11"
+               Name="lblmayonnaise"
+               Content="Mayonnaise:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="13"
+               Name="lblChillyPepper"
+               Content="Chilly pepper:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="15"
+               Name="lblOlives"
+               Content="Olives:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="17"
+               Name="lblOregano"
+               Content="Oregano:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="19"
+               Name="lblSesame"
+               Content="Sesame:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <Label Grid.Column="1"
+               Grid.Row="21"
+               Name="lblCheese"
+               Content="Cheese:"
+               Padding="0"
+               HorizontalAlignment="Right" />
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="3"
+                    Grid.Row="1">
+            <RadioButton  GroupName="Size"
+                          Width="70"
+                          Name="cbBig"
+                          Content="big"
+                          IsChecked="{Binding OrderPizza.Size, 
+                Converter={StaticResource ResourceKey=radioButtonConverter}, ConverterParameter=big,
+                UpdateSourceTrigger=PropertyChanged}"></RadioButton>
+            <RadioButton  GroupName="Size"
+                          Width="65"
+                          Name="cbmiddle"
+                          Content="middle"
+                          IsChecked="{Binding OrderPizza.Size, 
+                Converter={StaticResource ResourceKey=radioButtonConverter}, ConverterParameter=middle, 
+                 UpdateSourceTrigger=PropertyChanged}"></RadioButton>
+            <RadioButton  GroupName="Size"
+                          Width="65"
+                          Name="cbsmall"
+                          Content="small"
+                          IsChecked="{Binding OrderPizza.Size, 
+                Converter={StaticResource ResourceKey=radioButtonConverter}, ConverterParameter=small, 
+                 UpdateSourceTrigger=PropertyChanged}"></RadioButton>
+        </StackPanel>
+        <CheckBox Grid.Column="3"
+                  Grid.Row="3"
+                  Name="cSalami"
+                  IsChecked="{Binding OrderPizza.Salami, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="5"
+                  Name="cHam"
+                  IsChecked="{Binding OrderPizza.Ham, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="7"
+                  Name="cKulen"
+                  IsChecked="{Binding OrderPizza.Kulen, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="9"
+                  Name="cKetchup"
+                  IsChecked="{Binding OrderPizza.Ketchup, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="11"
+                  Name="cMayonnaise"
+                  IsChecked="{Binding OrderPizza.Mayonnaise, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="13"
+                  Name="cChillyPepper"
+                  IsChecked="{Binding OrderPizza.ChillyPepper, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="15"
+                  Name="cOlives"
+                  IsChecked="{Binding OrderPizza.Olives, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="17"
+                  Name="cOregano"
+                  IsChecked="{Binding OrderPizza.Oregano, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="19"
+                  Name="cSesame"
+                  IsChecked="{Binding OrderPizza.Sesame, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <CheckBox Grid.Column="3"
+                  Grid.Row="21"
+                  Name="cCheese"
+                  IsChecked="{Binding OrderPizza.Cheese, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Center" />
+        <Button Grid.Column="3"
+                Grid.Row="23"
+                Name="btnSave"
+                Content="Calculate"
+                Height="20"
+                Width="100"
+                HorizontalAlignment="Center"
+                Command="{Binding Save, UpdateSourceTrigger=PropertyChanged}"
+                Margin="0,10,0,0">
+            
+        </Button>
+        <Label  HorizontalAlignment="Center"
+                Grid.Column="5"
+                Grid.Row="23"
+                Content="{Binding LabelInfo, Mode=OneWay}"
+                Foreground="Red" />
+    </Grid>
+</Window>
