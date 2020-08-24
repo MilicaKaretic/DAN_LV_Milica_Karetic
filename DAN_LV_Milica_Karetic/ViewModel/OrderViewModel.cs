@@ -3,6 +3,7 @@ using DAN_LV_Milica_Karetic.Model;
 using DAN_LV_Milica_Karetic.View;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
@@ -189,6 +190,7 @@ namespace DAN_LV_Milica_Karetic.ViewModel
             orderView.cCheese.IsEnabled = false;
             orderView.cOregano.IsEnabled = false;
             orderView.cSesame.IsEnabled = false;
+            orderView.btnSave.IsEnabled = false;
         }
 
         /// <summary>
@@ -207,20 +209,31 @@ namespace DAN_LV_Milica_Karetic.ViewModel
         /// </summary>
         private void SendSMSExecute()
         {
+            try
+            {
+                //string accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
+                string accountSid = "AC878e8b1a8493db3bfab83eb883369c3a";
+                //string authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+                string authToken = "c4a498867111886c7f5b13ea92257e51";
+                TwilioClient.Init(accountSid, authToken);
 
-            //string accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
-            string accountSid = "AC878e8b1a8493db3bfab83eb883369c3a";
-            //string authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
-            string authToken = "01bb1b14c912cc0c7e7a0e7916ebaff2";
-            TwilioClient.Init(accountSid, authToken);
+                var to = new PhoneNumber("+381611822834");
+                var from = new PhoneNumber("+1 202 831 8982");
 
-            var to = new PhoneNumber("+381611822834");
-            var from = new PhoneNumber("+381611822834");
+                var message = MessageResource.Create(
+                    to: to,
+                    from: from,
+                    body: "Your pizza is ready");
 
-            var message = MessageResource.Create(
-                to: to,
-                from: from,
-                body: "Your pizza is ready");
+                MessageBox.Show("Message successuflly sent.");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please provide valid token or phone number to send SMS.");
+
+            }
+
+            DisableButtons();
 
         }
 
