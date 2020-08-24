@@ -7,7 +7,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace DAN_LV_Milica_Karetic.ViewModel
 {
@@ -96,14 +100,26 @@ namespace DAN_LV_Milica_Karetic.ViewModel
             }
         }
 
-        
+        private ICommand sendSMS;
+        public ICommand SendSMS
+        {
+            get
+            {
+                if (sendSMS == null)
+                {
+                    sendSMS = new RelayCommand(param => SendSMSExecute(), param => CanSendSMSExecute());
+                }
+                return sendSMS;
+            }
+        }
+
+
 
         #endregion
 
         #region Functions
 
-
-
+       
         private void SaveExecute()
         {
 
@@ -146,7 +162,8 @@ namespace DAN_LV_Milica_Karetic.ViewModel
                 totalAmount += amount;
             }
 
-            LabelInfo = "Your bill is " + totalAmount + " RSD.";           
+            LabelInfo = "Your amount is " + totalAmount + " RSD.";
+            DisableButtons();
 
         }
 
@@ -174,7 +191,34 @@ namespace DAN_LV_Milica_Karetic.ViewModel
 
         }
 
-       
+        private void SendSMSExecute()
+        {
+
+            //string accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
+            string accountSid = "AC878e8b1a8493db3bfab83eb883369c3a";
+            //string authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+            string authToken = "01bb1b14c912cc0c7e7a0e7916ebaff2";
+            TwilioClient.Init(accountSid, authToken);
+
+            var to = new PhoneNumber("+381611822834");
+            var from = new PhoneNumber("+381611822834");
+
+            var message = MessageResource.Create(
+                to: to,
+                from: from,
+                body: "Your pizza is ready");
+
+        }
+
+
+        private bool CanSendSMSExecute()
+        {
+            if (LabelInfo != null)
+                return true;
+
+                return false;
+        }
+
 
         #endregion
     }
